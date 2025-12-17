@@ -1,0 +1,26 @@
+.mainHead{
+    justify-content: center;
+    display: flex;
+    color: #00d5c1;
+}
+
+.searchBar{
+    display: flex;
+    justify-content: end;
+}
+
+.searchBtn{
+    border-radius: 20px;
+}
+
+#search{
+    border-radius: 20px;
+    padding: 0px 10px 0 10px;
+    width: 38%;
+    height: 45px;
+}
+
+.loadingText{
+    display: flex;
+    justify-content: center;
+}

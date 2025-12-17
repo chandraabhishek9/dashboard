@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="col-sm-12 mainHead">
+        <h1><u>Dashboard Data</u></h1>
+    </div>
+
+    <div class="col-sm-12 mt-5">
+        <div class="searchBar">
+            <input type="text" name="search" id="search" [(ngModel)]="searchText" (keyup)="resetData()" (keydown)="enterHit($event)">&nbsp;
+            <button class="btn btn-primary searchBtn" (click)="searchViaText()" [disabled]="searchText == ''">Search</button>
+        </div>
+    </div>
+
+    @if(tableData.length == 0 && !searchClicked){
+        <div class="col-sm-12 mt-5">
+            <div class="loadingText">
+                <h1>{{loadingText}}</h1>
+            </div>
+        </div>
+    }
+
+    @if(tableData.length == 0 && searchClicked){
+        <div class="col-sm-12 mt-5">
+            <div class="loadingText">
+                <h1>{{noData}}</h1>
+            </div>
+        </div>
+    }
+
+    <div class="col-sm-12 mt-4 dashboardTable">
+        <table class="table table-bordered border-primary">
+            @if(tableData.length != 0){
+                <tr>
+                    @for (head of tableHeading; track head){
+                        <th>{{head}}</th>
+                    }
+                </tr>
+            }
+            @for(data of tableData;let index = $index; track data?.name){
+                <tr>
+                    <td>{{index + 1}}</td>
+                    <td>{{data?.name}}</td>
+                    <td>{{data?.email}}</td>
+                    <td>{{data?.phone}}</td>
+                    <td>{{data?.company?.name}}</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
